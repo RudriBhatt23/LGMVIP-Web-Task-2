@@ -1,0 +1,223 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgb(130, 106, 251);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1400px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.container header {
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-container, .details-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.form-container {
+  max-width: 700px;
+}
+
+.details-container {
+  max-width: 700px;
+  padding-left: 20px;
+}
+
+.form {
+  margin-top: 30px;
+}
+
+.input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-box label {
+  color: #333;
+  font-weight: 500;
+}
+
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.input-box input:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.column {
+  display: flex;
+  column-gap: 15px;
+}
+
+.gender-box {
+  margin-top: 20px;
+}
+
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.gender-option {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+
+.gender {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+
+.gender label {
+  color: #707070;
+  cursor: pointer;
+}
+
+.skills-box {
+  margin-top: 20px;
+}
+
+.skills-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.skills-option {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.skill input {
+  accent-color: rgb(130, 106, 251);
+}
+
+.skill label {
+  color: #707070;
+  cursor: pointer;
+}
+
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+  border-radius: 6px;
+}
+
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+
+.details-container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#students-table th, #students-table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#students-table th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+#students-table td img.profile-img {
+  max-width: 100px;
+  border-radius: 50%;
+}
+
+.divider {
+  width: 1px;
+  background-color: #ddd;
+  height: auto;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .form .column {
+    flex-wrap: wrap;
+  }
+
+  .gender-option, .skills-option {
+    row-gap: 15px;
+  }
+}

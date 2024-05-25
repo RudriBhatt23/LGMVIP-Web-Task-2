@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Student Enrollment Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <header>Student Enrollment Form</header>
+        <form action="#" class="form" id="enrollment-form">
+          <div class="input-box">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" placeholder="Enter your full name" required aria-label="Full Name"/>
+          </div>
+
+          <div class="input-box">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email address" required aria-label="Email Address"/>
+          </div>
+
+          <div class="gender-box">
+            <h3>Gender</h3>
+            <div class="gender-option">
+              <div class="gender">
+                <input type="radio" id="check-male" name="gender" checked />
+                <label for="check-male">Male</label>
+              </div>
+              <div class="gender">
+                <input type="radio" id="check-female" name="gender" />
+                <label for="check-female">Female</label>
+              </div>
+              <div class="gender">
+                <input type="radio" id="check-other" name="gender" />
+                <label for="check-other">Prefer not to say</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <label for="profile-image">Profile Image</label>
+            <input type="file" id="profile-image" accept="image/*" required aria-label="Profile Image"/>
+          </div>
+
+          <div class="input-box skills-box">
+            <h3>Skills</h3>
+            <div class="skills-option">
+              <div class="skill">
+                <input type="checkbox" id="skill-html" name="skills" value="HTML"/>
+                <label for="skill-html">HTML</label>
+              </div>
+              <div class="skill">
+                <input type="checkbox" id="skill-css" name="skills" value="CSS"/>
+                <label for="skill-css">CSS</label>
+              </div>
+              <div class="skill">
+                <input type="checkbox" id="skill-js" name="skills" value="JavaScript"/>
+                <label for="skill-js">JavaScript</label>
+              </div>
+              <div class="skill">
+                <input type="checkbox" id="skill-python" name="skills" value="Python"/>
+                <label for="skill-python">Python</label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="divider"></div>
+      <div class="details-container">
+        <header>Registered Students</header>
+        <table id="students-table">
+          <thead>
+            <tr>
+              <th>Profile Image</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="students-list">
+            <!-- Registered students' details will appear here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      document.getElementById('enrollment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const fullName = document.getElementById('full-name').value;
+        const email = document.getElementById('email').value;
+        const gender = document.querySelector('input[name="gender"]:checked').nextElementSibling.textContent;
+        const profileImage = document.getElementById('profile-image').files[0];
+
+        const skills = Array.from(document.querySelectorAll('input[name="skills"]:checked')).map(skill => skill.nextElementSibling.textContent).join(', ');
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const studentDetails = `
+            <tr>
+              <td><img src="${e.target.result}" alt="Profile Image" class="profile-img"/></td>
+              <td>
+                <p><strong>Name:</strong> ${fullName}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Gender:</strong> ${gender}</p>
+                <p><strong>Skills:</strong> ${skills}</p>
+              </td>
+            </tr>
+          `;
+          document.getElementById('students-list').insertAdjacentHTML('beforeend', studentDetails);
+        };
+        reader.readAsDataURL(profileImage);
+        
+        // Reset the form
+        document.getElementById('enrollment-form').reset();
+      });
+    </script>
+  </body>
+</html>
